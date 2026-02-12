@@ -7,8 +7,16 @@ const App = () => {
   const addToQueue = (customer) => {
     setQueue([...queue, { ...customer, id: Date.now(), status: 'pending' }]);
   };
-  const updateStatus = (id, newStatus) => {};
-  const removeFromQueue = (id) => {};
+  const updateStatus = (id, newStatus) => {
+    setQueue(
+      queue.map((customer) =>
+        customer.id === id ? { ...customer, status: newStatus } : customer
+      )
+    );
+  };
+  const removeFromQueue = (id) => {
+    setQueue(queue.filter((customer) => customer.id !== id));
+  };
   return (
     <div className="h-screen w-full bg-slate-800">
       <header className="  text-white">
