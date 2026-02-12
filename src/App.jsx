@@ -1,6 +1,14 @@
+import { useState } from 'react';
 import Display from './components/Display';
 import Form from './components/Form';
 const App = () => {
+  const [queue, setQueue] = useState([]);
+
+  const addToQueue = (customer) => {
+    setQueue([...queue, { ...customer, id: Date.now(), status: 'pending' }]);
+  };
+  const updateStatus = (id, newStatus) => {};
+  const removeFromQueue = (id) => {};
   return (
     <div className="h-screen w-full bg-slate-800">
       <header className="  text-white">
@@ -11,7 +19,7 @@ const App = () => {
       </header>
       <main className="max-w-5xl pt-8 m-auto flex gap-4">
         <div className="w-2/5">
-          <Form />
+          <Form addToQueue={addToQueue} />
         </div>
         <div className="w-3/5">
           <Display />
