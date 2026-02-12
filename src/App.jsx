@@ -30,7 +30,11 @@ const App = () => {
           <Form addToQueue={addToQueue} />
         </div>
         <div className="w-3/5">
-          <Display />
+          <Display
+            queue={queue}
+            onUpdateStatus={updateStatus}
+            onRemoveQueue={removeFromQueue}
+          />
         </div>
       </main>
     </div>
